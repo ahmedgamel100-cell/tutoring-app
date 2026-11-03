@@ -10,249 +10,221 @@
   :root{
     --bg:#f5f5f3;--surface:#fff;--surface2:#f9f9f7;
     --border:#e5e5e2;--border2:#d0d0cc;
-    --text:#1a1a18;--text2:#6b6b67;--text3:#9b9b97;
+    --text:#1a1a18;--text2:#6b6b67;--text3:#8b8b87;
     --accent:#2563eb;--accent-bg:#eff6ff;--accent-text:#1d4ed8;
     --green:#1D9E75;--green-bg:#e1f5ee;--green-text:#0F6E56;
     --amber:#b45309;--amber-bg:#fef3c7;--amber-text:#92400e;
     --red:#dc2626;--red-bg:#fee2e2;--red-text:#991b1b;
     --radius:8px;
   }
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;color:var(--text);background:var(--bg);direction:rtl}
-  .app{display:flex;height:100vh}
-  /* SIDEBAR */
-  .sidebar{width:210px;background:var(--surface);border-left:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Tahoma,sans-serif;font-size:14px;color:var(--text);background:var(--bg);direction:rtl}
+  .app{display:flex;min-height:100vh}
+  .sidebar{width:210px;background:var(--surface);border-left:1px solid var(--border);display:flex;flex-direction:column;flex-shrink:0;position:sticky;top:0;height:100vh}
   .logo{padding:1.25rem 1rem;border-bottom:1px solid var(--border)}
-  .logo-title{font-size:15px;font-weight:600;color:var(--text)}
+  .logo-title{font-size:15px;font-weight:600}
   .logo-sub{font-size:11px;color:var(--text3);margin-top:2px}
-  .nav{padding:0.5rem 0;flex:1}
-  .nav-item{display:flex;align-items:center;gap:9px;padding:9px 1rem;cursor:pointer;font-size:13px;color:var(--text2);border-radius:0;transition:all 0.1s;margin:1px 6px;border-radius:var(--radius)}
+  .nav{padding:.5rem 0;flex:1}
+  .nav-item{display:flex;align-items:center;gap:9px;padding:9px 1rem;cursor:pointer;font-size:13px;color:var(--text2);margin:1px 6px;border-radius:var(--radius)}
   .nav-item:hover{background:var(--bg);color:var(--text)}
   .nav-item.active{background:var(--accent-bg);color:var(--accent-text);font-weight:500}
   .nav-item i{font-size:17px}
-  /* MAIN */
-  .main{flex:1;overflow-y:auto;background:var(--bg)}
-  .page{display:none;padding:1.75rem}
+  .main{flex:1;min-width:0}
+  .page{display:none;padding:1.5rem}
   .page.active{display:block}
-  .page-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem}
+  .page-header{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:1.25rem}
   .page-title{font-size:20px;font-weight:600}
-  /* BUTTONS */
-  .btn{padding:7px 14px;border-radius:var(--radius);border:1px solid var(--border2);background:var(--surface);color:var(--text);cursor:pointer;font-size:13px;font-family:inherit;transition:all 0.1s;display:inline-flex;align-items:center;gap:6px}
+  .sub{font-size:12px;color:var(--text3)}
+  .btn{padding:7px 14px;border-radius:var(--radius);border:1px solid var(--border2);background:var(--surface);color:var(--text);cursor:pointer;font-size:13px;font-family:inherit;display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
   .btn:hover{background:var(--bg)}
   .btn-accent{background:var(--accent);color:#fff;border-color:var(--accent)}
-  .btn-accent:hover{opacity:0.9}
-  .btn-sm{padding:5px 10px;font-size:12px}
+  .btn-accent:hover{background:var(--accent);opacity:.9}
+  .btn-sm{padding:4px 9px;font-size:12px}
   .btn-danger{background:var(--red-bg);color:var(--red-text);border-color:#fecaca}
-  /* CARDS */
-  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
-  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:1.5rem}
-  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem}
-  .stat-label{font-size:11px;color:var(--text3);margin-bottom:6px;font-weight:500;text-transform:uppercase;letter-spacing:.5px}
-  .stat-value{font-size:24px;font-weight:600}
+  .btn-row{display:flex;gap:6px;flex-wrap:wrap}
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:1.25rem}
+  .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:.9rem 1rem}
+  .stat-label{font-size:12px;color:var(--text3);margin-bottom:6px;font-weight:500}
+  .stat-value{font-size:22px;font-weight:600}
   .stat-sub{font-size:11px;color:var(--text3);margin-top:3px}
-  /* TABLE */
-  .table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+  .c-accent{color:var(--accent)}.c-green{color:var(--green)}.c-amber{color:var(--amber)}.c-red{color:var(--red)}
+  .profit-box{background:linear-gradient(135deg,#059669,#047857);border-radius:12px;padding:1.25rem 1.5rem;color:#fff;margin-bottom:1.25rem}
+  .profit-label{font-size:12px;opacity:.85;margin-bottom:4px}
+  .profit-main{font-size:30px;font-weight:700;margin-bottom:12px}
+  .profit-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
+  .profit-item{background:rgba(255,255,255,.15);border-radius:var(--radius);padding:10px 12px}
+  .profit-item-val{font-size:16px;font-weight:600}
+  .profit-item-lbl{font-size:11px;opacity:.8;margin-top:2px}
+  .table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow-x:auto;margin-bottom:1rem}
   table{width:100%;border-collapse:collapse;font-size:13px}
-  th{padding:10px 14px;text-align:right;font-weight:500;font-size:11px;color:var(--text3);border-bottom:1px solid var(--border);background:var(--surface2);text-transform:uppercase;letter-spacing:.4px}
-  td{padding:11px 14px;border-bottom:1px solid var(--border);color:var(--text)}
+  th{padding:9px 12px;text-align:right;font-weight:500;font-size:11.5px;color:var(--text3);border-bottom:1px solid var(--border);background:var(--surface2);white-space:nowrap}
+  td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:middle}
   tr:last-child td{border-bottom:none}
-  tr:hover td{background:#fafafa}
-  /* BADGES */
-  .badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:500}
+  tbody tr:hover td{background:#fafafa}
+  tr.clickable{cursor:pointer}
+  tfoot td{background:var(--surface2);font-weight:600}
+  .num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .muted{color:var(--text3);font-size:11.5px}
+  .badge{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11px;font-weight:500;white-space:nowrap}
   .badge-green{background:var(--green-bg);color:var(--green-text)}
   .badge-amber{background:var(--amber-bg);color:var(--amber-text)}
   .badge-red{background:var(--red-bg);color:var(--red-text)}
   .badge-blue{background:var(--accent-bg);color:var(--accent-text)}
-  /* PROFIT BOX */
-  .profit-box{background:linear-gradient(135deg,#059669,#047857);border-radius:12px;padding:1.25rem 1.5rem;color:#fff;margin-bottom:1.5rem}
-  .profit-label{font-size:12px;opacity:0.8;margin-bottom:4px}
-  .profit-main{font-size:32px;font-weight:700;margin-bottom:12px}
-  .profit-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
-  .profit-item{background:rgba(255,255,255,0.15);border-radius:var(--radius);padding:10px 12px}
-  .profit-item-val{font-size:17px;font-weight:600}
-  .profit-item-lbl{font-size:11px;opacity:0.75;margin-top:2px}
-  /* MODAL */
-  .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:200;align-items:center;justify-content:center}
+  .badge-gray{background:var(--surface2);color:var(--text3);border:1px solid var(--border)}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;cursor:pointer}
+  .card:hover{border-color:var(--accent)}
+  .card-title{font-size:15px;font-weight:600}
+  .mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px}
+  .mini{background:var(--surface2);border-radius:var(--radius);padding:6px 8px;text-align:center}
+  .mini-val{font-weight:600;font-size:14px}
+  .mini-lbl{color:var(--text3);font-size:10.5px;margin-top:1px}
+  .progress{height:6px;background:var(--border);border-radius:4px;overflow:hidden;margin-top:4px;min-width:60px}
+  .progress>div{height:100%;background:var(--green)}
+  .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:center;justify-content:center;padding:10px}
   .overlay.open{display:flex}
-  .modal{background:var(--surface);border-radius:14px;border:1px solid var(--border);padding:1.5rem;width:480px;max-width:95vw;max-height:90vh;overflow-y:auto;direction:rtl}
-  .modal-title{font-size:16px;font-weight:600;margin-bottom:1.25rem;display:flex;justify-content:space-between;align-items:center}
-  .modal-close{cursor:pointer;color:var(--text3);font-size:20px;line-height:1}
-  .modal-footer{display:flex;gap:8px;margin-top:1.25rem}
-  /* FORMS */
-  .form-group{margin-bottom:1rem}
-  .form-group label{display:block;font-size:12px;font-weight:500;color:var(--text2);margin-bottom:5px}
-  input,select,textarea{width:100%;padding:8px 10px;border:1px solid var(--border2);border-radius:var(--radius);font-size:13px;font-family:inherit;background:var(--surface);color:var(--text);direction:rtl;transition:border 0.15s}
-  input:focus,select:focus{outline:none;border-color:var(--accent)}
-  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  /* PREVIEW BOX */
-  .preview-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:10px 12px;margin-top:8px;font-size:13px}
-  .preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:6px}
-  .preview-item-lbl{color:var(--text3);font-size:11px;margin-bottom:2px}
-  .preview-item-val{font-weight:600;font-size:15px}
-  /* MONTH TABS */
-  .month-tabs{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
-  .month-tab{padding:5px 13px;border-radius:20px;border:1px solid var(--border2);background:var(--surface);color:var(--text2);cursor:pointer;font-size:12px;font-family:inherit;transition:all 0.1s}
-  .month-tab:hover{background:var(--bg)}
-  .month-tab.active{background:var(--accent-bg);color:var(--accent-text);border-color:var(--accent);font-weight:500}
-  /* PAIR CARD */
-  .pair-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;margin-bottom:8px}
-  .pair-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
-  .pair-name{font-size:14px;font-weight:600}
-  .pair-sub{font-size:12px;color:var(--text3);margin-top:2px}
-  .pair-fin{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-  .fin-box{background:var(--surface2);border-radius:var(--radius);padding:7px 10px;text-align:center}
-  .fin-val{font-weight:600;font-size:15px}
-  .fin-lbl{color:var(--text3);font-size:11px;margin-top:1px}
-  /* RATE HISTORY */
-  .rate-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px}
-  .rate-row:last-child{border-bottom:none}
-  /* LOADING */
-  .loading{text-align:center;padding:2rem;color:var(--text3)}
-  .loading i{font-size:28px;margin-bottom:6px;display:block}
-  /* TOAST */
-  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a18;color:#fff;padding:10px 20px;border-radius:var(--radius);font-size:13px;z-index:999;opacity:0;transition:opacity 0.3s;pointer-events:none}
+  .modal{background:var(--surface);border-radius:14px;border:1px solid var(--border);padding:1.25rem;width:520px;max-width:100%;max-height:92vh;overflow-y:auto}
+  .modal.wide{width:820px}
+  .modal-title{font-size:16px;font-weight:600;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .modal-close{cursor:pointer;color:var(--text3);font-size:22px;line-height:1;background:none;border:none}
+  .modal-footer{display:flex;gap:8px;margin-top:1rem}
+  .form-group{margin-bottom:.8rem}
+  .form-group label{display:block;font-size:12px;font-weight:500;color:var(--text2);margin-bottom:4px}
+  input,select,textarea{width:100%;padding:8px 10px;border:1px solid var(--border2);border-radius:var(--radius);font-size:13px;font-family:inherit;background:var(--surface);color:var(--text)}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+  input[type=checkbox]{width:auto}
+  textarea{min-height:56px;resize:vertical}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .form-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .check{display:flex;align-items:center;gap:6px;font-size:13px;cursor:pointer}
+  .preview-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:8px 12px;font-size:12.5px;color:var(--text2)}
+  .section{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1rem;margin-bottom:1rem}
+  .section-title{font-size:14px;font-weight:600;margin-bottom:.8rem;display:flex;align-items:center;gap:6px;justify-content:space-between}
+  .h-title{font-size:13px;font-weight:600;color:var(--text2);margin:1rem 0 .5rem}
+  .filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem;align-items:end}
+  .filters>div{min-width:130px;flex:1}
+  .filters label{display:block;font-size:11.5px;color:var(--text3);margin-bottom:3px}
+  .empty{text-align:center;padding:2rem;color:var(--text3)}
+  .empty i{font-size:28px;display:block;margin-bottom:6px}
+  .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1a1a18;color:#fff;padding:10px 20px;border-radius:var(--radius);font-size:13px;z-index:999;opacity:0;transition:opacity .3s;pointer-events:none;max-width:90vw}
   .toast.show{opacity:1}
-  /* RATE BANNER */
   .rate-banner{background:var(--accent-bg);border:1px solid #bfdbfe;border-radius:var(--radius);padding:8px 12px;font-size:12px;color:var(--accent-text);display:flex;align-items:center;gap:6px;margin-bottom:1rem}
-  /* SECTION TITLE */
-  .section-title{font-size:13px;font-weight:500;color:var(--text3);margin-bottom:10px;margin-top:1rem}
-  .settings-section{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem}
-  .settings-section-title{font-size:14px;font-weight:600;margin-bottom:1rem;display:flex;align-items:center;gap:6px;color:var(--text)}
+  .back{cursor:pointer;color:var(--accent);font-size:13px;display:inline-flex;align-items:center;gap:4px;margin-bottom:8px}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media (max-width:760px){
+    .app{flex-direction:column}
+    .sidebar{width:100%;height:auto;position:fixed;bottom:0;top:auto;z-index:100;border-left:none;border-top:1px solid var(--border)}
+    .logo{display:none}
+    .nav{display:flex;padding:0;justify-content:space-around}
+    .nav-item{flex-direction:column;gap:2px;font-size:10.5px;padding:7px 4px;margin:0;flex:1;justify-content:center;text-align:center}
+    .main{padding-bottom:64px}
+    .page{padding:1rem}
+    .form-row,.form-row3,.split{grid-template-columns:1fr}
+    .profit-main{font-size:24px}
+  }
 </style>
 </head>
 <body>
-
 <div class="app">
   <div class="sidebar">
     <div class="logo">
       <div class="logo-title">📚 دروس أونلاين</div>
-      <div class="logo-sub">لوحة تحكم المدير</div>
+      <div class="logo-sub">إدارة المجموعات والمدفوعات</div>
     </div>
     <nav class="nav">
-      <div class="nav-item active" onclick="showPage('dashboard',this)"><i class="ti ti-layout-dashboard"></i> الرئيسية</div>
-      <div class="nav-item" onclick="showPage('teachers',this)"><i class="ti ti-users"></i> المدرسين</div>
-      <div class="nav-item" onclick="showPage('students',this)"><i class="ti ti-school"></i> الطلبة</div>
-      <div class="nav-item" onclick="showPage('sessions',this)"><i class="ti ti-calendar"></i> الحصص</div>
-      <div class="nav-item" onclick="showPage('finance',this)"><i class="ti ti-chart-bar"></i> المالية</div>
-      <div class="nav-item" onclick="showPage('settings',this)"><i class="ti ti-settings"></i> الإعدادات</div>
+      <div class="nav-item active" data-page="dashboard"><i class="ti ti-layout-dashboard"></i> الرئيسية</div>
+      <div class="nav-item" data-page="teachers"><i class="ti ti-users"></i> المدرسين</div>
+      <div class="nav-item" data-page="payments"><i class="ti ti-cash"></i> المدفوعات</div>
+      <div class="nav-item" data-page="settings"><i class="ti ti-settings"></i> الإعدادات</div>
     </nav>
   </div>
 
   <div class="main">
-
     <!-- DASHBOARD -->
     <div class="page active" id="page-dashboard">
       <div class="page-header">
         <div class="page-title">الرئيسية</div>
-        <div style="font-size:12px;color:var(--text3)" id="dash-date"></div>
+        <button class="btn btn-accent" onclick="openPaymentModal()"><i class="ti ti-plus"></i> تسجيل دفعة</button>
       </div>
-      <div class="rate-banner" id="rate-banner"><i class="ti ti-currency-dollar"></i><span id="rate-banner-text">جارٍ التحميل...</span></div>
-      <div class="profit-box">
-        <div class="profit-label">صافي الأرباح هذا الشهر</div>
-        <div class="profit-main" id="dash-profit">—</div>
-        <div class="profit-grid">
-          <div class="profit-item"><div class="profit-item-val" id="dash-collected">—</div><div class="profit-item-lbl">محصّل من الطلبة (ر.ق)</div></div>
-          <div class="profit-item"><div class="profit-item-val" id="dash-paid">—</div><div class="profit-item-lbl">مدفوع للمدرسين (ج.م)</div></div>
-          <div class="profit-item"><div class="profit-item-val" id="dash-expected">—</div><div class="profit-item-lbl">ربح متوقع (ج.م)</div></div>
-        </div>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-card"><div class="stat-label">المدرسين</div><div class="stat-value" style="color:var(--accent)" id="dash-teachers">—</div></div>
-        <div class="stat-card"><div class="stat-label">الطلبة</div><div class="stat-value" style="color:var(--accent)" id="dash-students">—</div></div>
-        <div class="stat-card"><div class="stat-label">حصص هذا الشهر</div><div class="stat-value" style="color:var(--amber)" id="dash-sessions">—</div></div>
-        <div class="stat-card"><div class="stat-label">سعر الصرف</div><div class="stat-value" style="color:var(--green)" id="dash-rate">—</div><div class="stat-sub">ج.م / ر.ق</div></div>
-      </div>
-      <div class="section-title">آخر الأزواج النشطة هذا الشهر</div>
-      <div id="dash-pairs"></div>
+      <div class="rate-banner"><i class="ti ti-currency-dollar"></i><span id="rate-banner-text">جارٍ التحميل...</span></div>
+      <div id="dash-content"><div class="empty"><i class="ti ti-loader"></i>جارٍ التحميل...</div></div>
     </div>
 
-    <!-- TEACHERS -->
+    <!-- TEACHERS LIST -->
     <div class="page" id="page-teachers">
       <div class="page-header">
         <div class="page-title">المدرسين</div>
-        <button class="btn btn-accent" onclick="openModal('modal-teacher')"><i class="ti ti-plus"></i> مدرس جديد</button>
+        <button class="btn btn-accent" onclick="openTeacherModal()"><i class="ti ti-plus"></i> مدرس جديد</button>
       </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>الاسم</th><th>المادة</th><th>سعر الحصة</th><th>الطلبة</th><th></th></tr></thead>
-          <tbody id="teachers-body"><tr><td colspan="5" class="loading">جارٍ التحميل...</td></tr></tbody>
-        </table>
-      </div>
+      <div id="teachers-content"></div>
     </div>
 
-    <!-- STUDENTS -->
-    <div class="page" id="page-students">
-      <div class="page-header">
-        <div class="page-title">الطلبة</div>
-        <button class="btn btn-accent" onclick="openModal('modal-student')"><i class="ti ti-plus"></i> طالب جديد</button>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>الاسم</th><th>المرحلة</th><th>المدرس</th><th>سعر الحصة (ر.ق)</th><th></th></tr></thead>
-          <tbody id="students-body"><tr><td colspan="5" class="loading">جارٍ التحميل...</td></tr></tbody>
-        </table>
-      </div>
+    <!-- TEACHER DETAIL (one Excel sheet) -->
+    <div class="page" id="page-teacher">
+      <div class="back" onclick="showPage('teachers')"><i class="ti ti-arrow-right"></i> كل المدرسين</div>
+      <div id="teacher-content"></div>
     </div>
 
-    <!-- SESSIONS -->
-    <div class="page" id="page-sessions">
+    <!-- PAYMENTS -->
+    <div class="page" id="page-payments">
       <div class="page-header">
-        <div class="page-title">الحصص الشهرية</div>
-        <button class="btn btn-accent" onclick="openModal('modal-session')"><i class="ti ti-plus"></i> إضافة حصص</button>
+        <div class="page-title">سجل المدفوعات</div>
+        <button class="btn btn-accent" onclick="openPaymentModal()"><i class="ti ti-plus"></i> تسجيل دفعة</button>
       </div>
-      <div class="month-tabs" id="session-tabs"></div>
-      <div id="sessions-content"><div class="loading"><i class="ti ti-calendar"></i>جارٍ التحميل...</div></div>
-    </div>
-
-    <!-- FINANCE -->
-    <div class="page" id="page-finance">
-      <div class="page-header">
-        <div class="page-title">التقرير المالي</div>
-        <select id="finance-month-sel" onchange="loadFinance()" style="width:auto;font-size:13px"></select>
+      <div class="filters">
+        <div><label>من تاريخ</label><input type="date" id="pf-from"></div>
+        <div><label>إلى تاريخ</label><input type="date" id="pf-to"></div>
+        <div><label>الطريقة</label><select id="pf-method"><option value="">الكل</option><option value="bank">بنك (QR)</option><option value="cash">كاش (QR)</option><option value="wallet">محفظة (EGP)</option></select></div>
+        <div><label>الحالة</label><select id="pf-status"><option value="">الكل</option><option value="not-arrived">لم يصل</option><option value="not-registered">لم يُسجل</option><option value="no-group">غير مربوط بمجموعة</option></select></div>
+        <div style="flex:2"><label>بحث</label><input id="pf-q" placeholder="اسم الطالب، المرسل، المجموعة..."></div>
       </div>
-      <div id="finance-content"></div>
+      <div id="payments-content"></div>
     </div>
 
     <!-- SETTINGS -->
     <div class="page" id="page-settings">
       <div class="page-header"><div class="page-title">الإعدادات</div></div>
-      <div class="settings-section">
-        <div class="settings-section-title"><i class="ti ti-currency-dollar"></i> تحديث سعر الصرف</div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>السعر الجديد (كم جنيه = 1 ريال)</label>
-            <input type="number" id="new-rate" placeholder="مثال: 13.85" step="0.01" min="1">
-          </div>
-          <div class="form-group">
-            <label>تاريخ التطبيق</label>
-            <input type="date" id="new-rate-date">
-          </div>
+      <div class="section">
+        <div class="section-title"><span><i class="ti ti-currency-dollar"></i> سعر الصرف</span></div>
+        <div class="form-row3">
+          <div class="form-group"><label>الدولار بكام جنيه</label><input type="number" step="0.01" id="set-egp-usd"></div>
+          <div class="form-group"><label>الدولار بكام ريال</label><input type="number" step="0.01" id="set-qr-usd"></div>
+          <div class="form-group"><label>اسم صاحبة الحساب</label><input id="set-owner"></div>
         </div>
-        <div class="form-group">
-          <label>ملاحظة (اختياري)</label>
-          <input type="text" id="new-rate-note" placeholder="سبب التغيير...">
-        </div>
-        <button class="btn btn-accent" onclick="saveRate()"><i class="ti ti-check"></i> حفظ السعر</button>
+        <div class="preview-box" id="set-preview"></div>
+        <div class="modal-footer"><button class="btn btn-accent" onclick="saveSettings()"><i class="ti ti-check"></i> حفظ</button></div>
       </div>
-      <div class="settings-section">
-        <div class="settings-section-title"><i class="ti ti-history"></i> سجل أسعار الصرف</div>
-        <div id="rate-history"></div>
+      <div class="section">
+        <div class="section-title"><span><i class="ti ti-file-import"></i> استيراد من ملف Excel القديم</span></div>
+        <p class="sub" style="margin-bottom:10px">بيقرا شيتات المدرسين (Group Name، Deal، Sessions، المدفوع) وشيتات سجل التحويلات (كاش / بنك / اسم الطالب / التاريخ).</p>
+        <div class="form-group"><input type="file" id="import-file" accept=".xlsx,.xlsm"></div>
+        <label class="check" style="margin-bottom:10px"><input type="checkbox" id="import-replace"> امسح البيانات الحالية الأول (المدرسين والمجموعات والمدفوعات)</label>
+        <button class="btn btn-accent" onclick="doImport()"><i class="ti ti-upload"></i> استيراد</button>
+        <div id="import-result" style="margin-top:10px"></div>
+      </div>
+      <div class="section">
+        <div class="section-title"><span><i class="ti ti-download"></i> تصدير ونسخة احتياطية</span></div>
+        <div class="btn-row">
+          <a class="btn" href="/api/export"><i class="ti ti-file-spreadsheet"></i> تنزيل Excel</a>
+          <a class="btn" href="/api/backup"><i class="ti ti-database-export"></i> نسخة احتياطية (JSON)</a>
+        </div>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- MODAL: Teacher -->
-<div class="overlay" id="modal-teacher" onclick="overlayClose(event,this)">
+<!-- TEACHER MODAL -->
+<div class="overlay" id="modal-teacher">
   <div class="modal">
-    <div class="modal-title">مدرس جديد<span class="modal-close" onclick="closeModal('modal-teacher')"><i class="ti ti-x"></i></span></div>
-    <input type="hidden" id="teacher-edit-id">
+    <div class="modal-title"><span id="mt-title">مدرس جديد</span><button class="modal-close" onclick="closeModal('modal-teacher')">×</button></div>
     <div class="form-row">
-      <div class="form-group"><label>الاسم</label><input id="t-name" placeholder="اسم المدرس"></div>
-      <div class="form-group"><label>المادة</label><input id="t-subject" placeholder="رياضيات، إنجليزي..."></div>
+      <div class="form-group"><label>الاسم *</label><input id="t-name" placeholder="Miss Mervat"></div>
+      <div class="form-group"><label>المادة</label><input id="t-subject" placeholder="Arabic"></div>
     </div>
-    <div class="form-group"><label>سعر الحصة الافتراضي (جنيه مصري)</label><input id="t-price" type="number" placeholder="200"></div>
-    <div class="form-group"><label>رقم التواصل</label><input id="t-phone" placeholder="واتساب / تيليجرام"></div>
+    <div class="form-row">
+      <div class="form-group"><label>سعر الحصة للمدرس (جنيه)</label><input type="number" step="0.01" id="t-rate" placeholder="60"></div>
+      <div class="form-group"><label>التليفون</label><input id="t-phone"></div>
+    </div>
+    <div class="form-group"><label>ملاحظات</label><textarea id="t-notes"></textarea></div>
     <div class="modal-footer">
       <button class="btn btn-accent" onclick="saveTeacher()"><i class="ti ti-check"></i> حفظ</button>
       <button class="btn" onclick="closeModal('modal-teacher')">إلغاء</button>
@@ -260,50 +232,70 @@
   </div>
 </div>
 
-<!-- MODAL: Student -->
-<div class="overlay" id="modal-student" onclick="overlayClose(event,this)">
+<!-- GROUP MODAL -->
+<div class="overlay" id="modal-group">
   <div class="modal">
-    <div class="modal-title">طالب جديد<span class="modal-close" onclick="closeModal('modal-student')"><i class="ti ti-x"></i></span></div>
-    <input type="hidden" id="student-edit-id">
+    <div class="modal-title"><span id="mg-title">مجموعة جديدة</span><button class="modal-close" onclick="closeModal('modal-group')">×</button></div>
     <div class="form-row">
-      <div class="form-group"><label>الاسم</label><input id="s-name" placeholder="اسم الطالب"></div>
-      <div class="form-group"><label>المرحلة الدراسية</label><input id="s-grade" placeholder="ثانوي، إعدادي..."></div>
+      <div class="form-group"><label>المدرس *</label><select id="g-teacher" onchange="onGroupTeacherChange()"></select></div>
+      <div class="form-group"><label>اسم المجموعة *</label><input id="g-name" placeholder="youssef+mariam"></div>
     </div>
-    <div class="form-group"><label>ولي الأمر / رقم التواصل</label><input id="s-parent" placeholder="رقم الواتساب"></div>
+    <div class="form-group"><label>الطلاب / بيانات إضافية</label><textarea id="g-details" placeholder="أسماء الطلاب، اسم ولي الأمر، رقم..."></textarea></div>
+    <div class="form-row3">
+      <div class="form-group"><label>سعر الباقة (ريال)</label><input type="number" step="0.01" id="g-deal" oninput="groupPreview()"></div>
+      <div class="form-group"><label>عدد الحصص</label><input type="number" step="1" id="g-total" oninput="groupPreview()"></div>
+      <div class="form-group"><label>سعر حصة المدرس (جنيه)</label><input type="number" step="0.01" id="g-rate" oninput="groupPreview()"></div>
+    </div>
+    <div class="preview-box" id="g-preview" style="margin-bottom:.8rem"></div>
     <div class="form-row">
-      <div class="form-group"><label>المدرس</label><select id="s-teacher"><option value="">-- اختر مدرس --</option></select></div>
-      <div class="form-group"><label>سعر الحصة للطالب (ر.ق)</label><input id="s-price" type="number" placeholder="100"></div>
+      <div class="form-group"><label>تاريخ البداية</label><input type="date" id="g-start"></div>
+      <div class="form-group"><label>&nbsp;</label><label class="check"><input type="checkbox" id="g-archived"> مجموعة منتهية (أرشيف)</label></div>
     </div>
+    <div class="form-group"><label>ملاحظات</label><textarea id="g-notes"></textarea></div>
     <div class="modal-footer">
-      <button class="btn btn-accent" onclick="saveStudent()"><i class="ti ti-check"></i> حفظ</button>
-      <button class="btn" onclick="closeModal('modal-student')">إلغاء</button>
+      <button class="btn btn-accent" onclick="saveGroup()"><i class="ti ti-check"></i> حفظ</button>
+      <button class="btn" onclick="closeModal('modal-group')">إلغاء</button>
     </div>
   </div>
 </div>
 
-<!-- MODAL: Session -->
-<div class="overlay" id="modal-session" onclick="overlayClose(event,this)">
+<!-- GROUP DETAIL MODAL -->
+<div class="overlay" id="modal-gdetail">
+  <div class="modal wide">
+    <div class="modal-title"><span id="gd-title"></span><button class="modal-close" onclick="closeModal('modal-gdetail')">×</button></div>
+    <div id="gd-content"></div>
+  </div>
+</div>
+
+<!-- PAYMENT MODAL -->
+<div class="overlay" id="modal-payment">
   <div class="modal">
-    <div class="modal-title">تسجيل حصص<span class="modal-close" onclick="closeModal('modal-session')"><i class="ti ti-x"></i></span></div>
+    <div class="modal-title"><span id="mp-title">تسجيل دفعة من طالب</span><button class="modal-close" onclick="closeModal('modal-payment')">×</button></div>
     <div class="form-row">
-      <div class="form-group"><label>الشهر</label><input id="sess-month" type="month"></div>
-      <div class="form-group"><label>الطالب</label><select id="sess-student" onchange="onSessionStudentChange()"><option value="">-- اختر --</option></select></div>
-    </div>
-    <div class="form-row">
-      <div class="form-group"><label>المدرس</label><select id="sess-teacher" onchange="updatePreview()"><option value="">-- اختر --</option></select></div>
-      <div class="form-group"><label>عدد الحصص</label><input id="sess-count" type="number" placeholder="8" min="1" oninput="updatePreview()"></div>
-    </div>
-    <div class="preview-box" id="sess-preview" style="display:none">
-      <div style="font-size:11px;color:var(--text3);margin-bottom:4px" id="preview-rate-label"></div>
-      <div class="preview-grid">
-        <div><div class="preview-item-lbl">الطالب يدفع</div><div class="preview-item-val" style="color:var(--accent)" id="prev-student">—</div></div>
-        <div><div class="preview-item-lbl">المدرس يستلم</div><div class="preview-item-val" style="color:var(--amber)" id="prev-teacher">—</div></div>
-        <div><div class="preview-item-lbl">ربحك</div><div class="preview-item-val" style="color:var(--green)" id="prev-profit">—</div></div>
+      <div class="form-group"><label>الطريقة *</label>
+        <select id="p-method" onchange="paymentPreview()">
+          <option value="bank">بنك / QR (ريال)</option>
+          <option value="cash">كاش (ريال)</option>
+          <option value="wallet">محفظة (جنيه)</option>
+        </select>
       </div>
+      <div class="form-group"><label id="p-amount-lbl">المبلغ *</label><input type="number" step="0.01" id="p-amount" oninput="paymentPreview()"></div>
     </div>
+    <div class="preview-box" id="p-preview" style="margin-bottom:.8rem;display:none"></div>
+    <div class="form-row">
+      <div class="form-group"><label>اسم الطالب</label><input id="p-student"></div>
+      <div class="form-group"><label>التاريخ</label><input type="date" id="p-date"></div>
+    </div>
+    <div class="form-group"><label>المجموعة</label><select id="p-group"></select></div>
+    <div class="form-group"><label>اسم المرسل</label><input id="p-sender"></div>
+    <div class="btn-row" style="margin-bottom:.8rem;gap:16px">
+      <label class="check"><input type="checkbox" id="p-arrived" checked> وصل</label>
+      <label class="check"><input type="checkbox" id="p-registered"> اتسجل</label>
+    </div>
+    <div class="form-group"><label>ملاحظات</label><input id="p-notes"></div>
     <div class="modal-footer">
-      <button class="btn btn-accent" onclick="saveSession()"><i class="ti ti-check"></i> حفظ</button>
-      <button class="btn" onclick="closeModal('modal-session')">إلغاء</button>
+      <button class="btn btn-accent" onclick="savePayment()"><i class="ti ti-check"></i> حفظ</button>
+      <button class="btn" onclick="closeModal('modal-payment')">إلغاء</button>
     </div>
   </div>
 </div>
@@ -311,422 +303,462 @@
 <div class="toast" id="toast"></div>
 
 <script>
-const API = '';
-let cache = { teachers:[], students:[], rates:[] };
-let activeSessionMonth = null;
-let editingTeacherId = null;
-let editingStudentId = null;
+// ─── STATE ─────────────────────────────────────────────────
+const state = { settings: null, teachers: [], groups: [], currentTeacher: null, currentGroup: null,
+  editingTeacher: null, editingGroup: null, editingPayment: null, paymentsCache: [] };
+const METHODS = { bank: 'بنك', cash: 'كاش', wallet: 'محفظة' };
+const today = () => new Date().toLocaleDateString('en-CA');
 
 // ─── UTILS ─────────────────────────────────────────────────
+function esc(s){ return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function toast(msg, err=false){
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.style.background=err?'#dc2626':'#1a1a18';
-  t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),3000);
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.background = err ? '#dc2626' : '#1a1a18';
+  t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 3000);
 }
 async function api(path, method='GET', body=null){
-  const opts={method,headers:{'Content-Type':'application/json'}};
-  if(body) opts.body=JSON.stringify(body);
-  const res=await fetch(API+path,opts);
-  const data=await res.json();
-  if(!res.ok) throw new Error(data.error||'خطأ');
+  const opts = { method, headers: {} };
+  if (body !== null) { opts.headers['Content-Type'] = 'application/json'; opts.body = JSON.stringify(body); }
+  const res = await fetch(path, opts);
+  let data = null;
+  try { data = await res.json(); } catch { /* non-JSON */ }
+  if (!res.ok) throw new Error((data && data.error) || `خطأ في السيرفر (${res.status})`);
   return data;
 }
-function fmt(n){ return Number(n||0).toLocaleString('ar-EG',{maximumFractionDigits:0}); }
-function fmtMonth(m){
-  if(!m) return '';
-  const [y,mo]=m.split('-');
-  return ['','يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'][+mo]+' '+y;
-}
-function getCurrentRate(month){
-  if(!month||!cache.rates.length) return 13.7;
-  const sorted=[...cache.rates].sort((a,b)=>a.date.localeCompare(b.date));
-  let rate=sorted[0].rate;
-  for(const r of sorted){ if(r.date.slice(0,7)<=month) rate=r.rate; }
-  return rate;
-}
-
-// ─── MODALS ────────────────────────────────────────────────
+const fmt = (n, d=0) => Number(n || 0).toLocaleString('en-US', { maximumFractionDigits: d, minimumFractionDigits: 0 });
+const pct = n => (Number(n || 0) * 100).toFixed(1) + '%';
+const qr = n => `${fmt(n, 1)} ر.ق`;
+const egp = n => `${fmt(n)} ج.م`;
 function openModal(id){ document.getElementById(id).classList.add('open'); }
 function closeModal(id){ document.getElementById(id).classList.remove('open'); }
-function overlayClose(e,el){ if(e.target===el) el.classList.remove('open'); }
+document.querySelectorAll('.overlay').forEach(o => o.addEventListener('mousedown', e => { if (e.target === o) o.classList.remove('open'); }));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.overlay.open').forEach(o => o.classList.remove('open')); });
+const val = id => document.getElementById(id).value.trim();
+const setVal = (id, v) => { document.getElementById(id).value = v ?? ''; };
+const numVal = id => parseFloat(document.getElementById(id).value) || 0;
+
+async function loadSettings(){
+  state.settings = await api('/api/settings');
+  document.getElementById('rate-banner-text').textContent =
+    `سعر الصرف: 1 ريال = ${state.settings.rate.toFixed(2)} جنيه  (الدولار ${state.settings.egp_per_usd} جنيه / ${state.settings.qr_per_usd} ريال)`;
+  return state.settings;
+}
 
 // ─── NAVIGATION ────────────────────────────────────────────
-function showPage(id,el){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
-  el.classList.add('active');
-  ({dashboard:loadDashboard,teachers:loadTeachers,students:loadStudents,sessions:loadSessions,finance:loadFinance,settings:loadSettings})[id]?.();
+const loaders = { dashboard: loadDashboard, teachers: loadTeachers, teacher: () => loadTeacher(state.currentTeacher), payments: loadPayments, settings: loadSettingsPage };
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  const navId = id === 'teacher' ? 'teachers' : id;
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.toggle('active', n.dataset.page === navId));
+  window.scrollTo(0, 0);
+  loaders[id]?.();
 }
+document.querySelectorAll('.nav-item').forEach(n => n.addEventListener('click', () => showPage(n.dataset.page)));
+function refresh(){ const p = document.querySelector('.page.active').id.replace('page-', ''); loaders[p]?.(); }
 
 // ─── DASHBOARD ─────────────────────────────────────────────
 async function loadDashboard(){
-  const month=new Date().toISOString().slice(0,7);
-  document.getElementById('dash-date').textContent=fmtMonth(month);
+  const el = document.getElementById('dash-content');
   try {
-    const [d, rates] = await Promise.all([api('/api/dashboard?month='+month), api('/api/rates')]);
-    cache.rates=rates;
-    const rate=d.rate;
-    document.getElementById('rate-banner-text').textContent=`سعر الصرف الحالي: ${rate.toFixed(2)} ج.م = 1 ر.ق`;
-    document.getElementById('dash-rate').textContent=rate.toFixed(2);
-    document.getElementById('dash-teachers').textContent=d.teachers;
-    document.getElementById('dash-students').textContent=d.students;
-    document.getElementById('dash-sessions').textContent=fmt(d.sessions);
-    const profit=(d.collected_qar*rate)-d.paid_egp;
-    const expected=(d.total_qar*rate)-d.total_egp;
-    document.getElementById('dash-profit').textContent=fmt(profit)+' ج.م';
-    document.getElementById('dash-collected').textContent=fmt(d.collected_qar)+' ر.ق';
-    document.getElementById('dash-paid').textContent=fmt(d.paid_egp)+' ج.م';
-    document.getElementById('dash-expected').textContent=fmt(expected)+' ج.م';
-    const sessions=await api('/api/sessions?month='+month);
-    const pairs=document.getElementById('dash-pairs');
-    if(!sessions.length){ pairs.innerHTML='<div class="loading"><i class="ti ti-calendar-plus"></i>لا توجد حصص هذا الشهر</div>'; return; }
-    pairs.innerHTML=sessions.slice(0,6).map(s=>{
-      const r=s.rate_snapshot||rate;
-      const sPays=s.student_price*s.count;
-      const tGets=s.teacher_price*s.count;
-      const profit=(sPays*r)-tGets;
-      return`<div class="pair-card">
-        <div class="pair-header">
-          <div><div class="pair-name">${s.student_name} ← ${s.teacher_name}</div><div class="pair-sub">${s.count} حصة · ${fmtMonth(s.month)}</div></div>
-          <div style="display:flex;gap:5px;flex-wrap:wrap">
-            <span class="badge ${s.paid_by_student?'badge-green':'badge-amber'}">${s.paid_by_student?'طالب ✓':'طالب ⏳'}</span>
-            <span class="badge ${s.paid_to_teacher?'badge-green':'badge-red'}">${s.paid_to_teacher?'مدرس ✓':'مدرس ✗'}</span>
-          </div>
+    await loadSettings();
+    const d = await api('/api/dashboard');
+    const t = d.totals;
+    const owner = esc(d.settings.owner_name || 'صافي الربح');
+    const mp = Object.fromEntries(d.month_payments.map(r => [r.method, r.total]));
+    el.innerHTML = `
+      <div class="profit-box">
+        <div class="profit-label">صافي ${owner} (من المحصّل بعد خصم المدرسين) — المجموعات الحالية</div>
+        <div class="profit-main">${egp(t.owner_net_egp)} <span style="font-size:15px;opacity:.85">≈ $${fmt(t.owner_net_usd)}</span></div>
+        <div class="profit-grid">
+          <div class="profit-item"><div class="profit-item-val">${qr(t.paid_qr)}</div><div class="profit-item-lbl">إجمالي المحصّل = ${egp(t.paid_egp)}</div></div>
+          <div class="profit-item"><div class="profit-item-val">${egp(t.teacher_paid_egp)}</div><div class="profit-item-lbl">اتدفع للمدرسين (${pct(t.teacher_ratio)})</div></div>
+          <div class="profit-item"><div class="profit-item-val">${pct(t.owner_ratio)}</div><div class="profit-item-lbl">نسبة ${owner}</div></div>
         </div>
-        <div class="pair-fin">
-          <div class="fin-box"><div class="fin-val" style="color:var(--accent)">${fmt(sPays)} ر.ق</div><div class="fin-lbl">من الطالب</div></div>
-          <div class="fin-box"><div class="fin-val" style="color:var(--amber)">${fmt(tGets)} ج.م</div><div class="fin-lbl">للمدرس</div></div>
-          <div class="fin-box"><div class="fin-val" style="color:var(--green)">${fmt(profit)} ج.م</div><div class="fin-lbl">ربحك</div></div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">متبقي على الطلاب</div><div class="stat-value c-red">${qr(t.unpaid_qr)}</div><div class="stat-sub">من باقات بقيمة ${qr(t.deal_qr)}</div></div>
+        <div class="stat-card"><div class="stat-label">الحصص</div><div class="stat-value c-accent">${fmt(t.taught)} / ${fmt(t.sessions_total)}</div><div class="stat-sub">متبقي ${fmt(t.remaining)} حصة</div></div>
+        <div class="stat-card"><div class="stat-label">مستحق للمدرسين لو خلصت الباقات</div><div class="stat-value c-amber">${egp(t.teacher_deal_egp - t.teacher_paid_egp)}</div><div class="stat-sub">إجمالي ${egp(t.teacher_deal_egp)}</div></div>
+        <div class="stat-card"><div class="stat-label">مدفوعات الشهر ده</div><div class="stat-value c-green">${qr((mp.bank||0)+(mp.cash||0))}</div><div class="stat-sub">بنك ${fmt(mp.bank)} · كاش ${fmt(mp.cash)} · محفظة ${fmt(mp.wallet)} ج</div></div>
+      </div>
+
+      <div class="h-title">المدرسين</div>
+      ${d.teachers.length ? `<div class="table-wrap"><table>
+        <thead><tr><th>المدرس</th><th>مجموعات</th><th>المحصّل</th><th>متبقي على الطلاب</th><th>حصص اتدفعت</th><th>متبقي حصص</th><th>اتدفع للمدرس</th><th>صافي ${owner}</th></tr></thead>
+        <tbody>${d.teachers.map(x => `<tr class="clickable" onclick="openTeacher(${x.id})">
+          <td><strong>${esc(x.name)}</strong> <span class="muted">${esc(x.subject)}</span></td>
+          <td>${x.groups}</td><td class="num">${qr(x.paid_qr)}</td>
+          <td class="num ${x.unpaid_qr > 0.5 ? 'c-red' : ''}">${qr(x.unpaid_qr)}</td>
+          <td>${fmt(x.taught)}</td><td>${fmt(x.remaining)}</td>
+          <td class="num">${egp(x.teacher_paid_egp)}</td><td class="num c-green">${egp(x.owner_net_egp)}</td>
+        </tr>`).join('')}</tbody></table></div>` : emptyBox('ti-users', 'لسه مفيش مدرسين — ضيف مدرس أو استورد ملف الإكسل من الإعدادات')}
+
+      <div class="split">
+        <div>
+          <div class="h-title">مجموعات عليها فلوس</div>
+          ${d.unpaid.length ? `<div class="table-wrap"><table><thead><tr><th>المجموعة</th><th>المدرس</th><th>المتبقي</th></tr></thead><tbody>
+            ${d.unpaid.slice(0, 15).map(g => `<tr class="clickable" onclick="openGroupDetail(${g.id})"><td>${esc(g.name)}</td><td class="muted">${esc(g.teacher_name)}</td><td class="num c-red">${qr(g.unpaid_qr)}</td></tr>`).join('')}
+          </tbody></table></div>` : emptyBox('ti-circle-check', 'كله دافع 👌')}
+        </div>
+        <div>
+          <div class="h-title">مجموعات قربت تخلص (حصتين أو أقل)</div>
+          ${d.finishing.length ? `<div class="table-wrap"><table><thead><tr><th>المجموعة</th><th>المدرس</th><th>متبقي</th></tr></thead><tbody>
+            ${d.finishing.slice(0, 15).map(g => `<tr class="clickable" onclick="openGroupDetail(${g.id})"><td>${esc(g.name)}</td><td class="muted">${esc(g.teacher_name)}</td><td>${g.remaining <= 0 ? '<span class="badge badge-gray">خلصت</span>' : `<span class="badge badge-amber">${fmt(g.remaining)} حصة</span>`}</td></tr>`).join('')}
+          </tbody></table></div>` : emptyBox('ti-calendar', 'مفيش مجموعات قربت تخلص')}
         </div>
       </div>`;
-    }).join('');
-  } catch(e){ toast('خطأ في تحميل البيانات',true); }
+  } catch (e) { el.innerHTML = emptyBox('ti-alert-triangle', e.message); }
 }
+function emptyBox(icon, msg){ return `<div class="empty"><i class="ti ${icon}"></i>${esc(msg)}</div>`; }
 
 // ─── TEACHERS ──────────────────────────────────────────────
 async function loadTeachers(){
+  const el = document.getElementById('teachers-content');
   try {
-    const teachers=await api('/api/teachers');
-    cache.teachers=teachers;
-    const body=document.getElementById('teachers-body');
-    if(!teachers.length){ body.innerHTML='<tr><td colspan="5" class="loading">لا يوجد مدرسين بعد</td></tr>'; return; }
-    const students=await api('/api/students');
-    body.innerHTML=teachers.map(t=>{
-      const cnt=students.filter(s=>s.teacher_id===t.id).length;
-      return`<tr>
-        <td><strong>${t.name}</strong>${t.phone?`<br><span style="font-size:11px;color:var(--text3)">${t.phone}</span>`:''}</td>
-        <td>${t.subject}</td>
-        <td>${fmt(t.price)} ج.م</td>
-        <td><span class="badge badge-blue">${cnt} طالب</span></td>
-        <td style="display:flex;gap:6px">
-          <button class="btn btn-sm" onclick="editTeacher(${t.id})"><i class="ti ti-edit"></i></button>
-          <button class="btn btn-sm btn-danger" onclick="deleteTeacher(${t.id})"><i class="ti ti-trash"></i></button>
-        </td>
-      </tr>`;
-    }).join('');
-  } catch(e){ toast('خطأ',true); }
+    await loadSettings();
+    state.teachers = await api('/api/teachers');
+    if (!state.teachers.length) { el.innerHTML = emptyBox('ti-users', 'لسه مفيش مدرسين'); return; }
+    el.innerHTML = `<div class="cards">${state.teachers.map(t => `
+      <div class="card" onclick="openTeacher(${t.id})">
+        <div style="display:flex;justify-content:space-between;align-items:start">
+          <div><div class="card-title">${esc(t.name)}</div><div class="muted">${esc(t.subject)} · ${fmt(t.rate_egp)} ج/حصة</div></div>
+          <span class="badge badge-blue">${t.summary.groups} مجموعة</span>
+        </div>
+        <div class="mini-grid">
+          <div class="mini"><div class="mini-val c-accent">${fmt(t.summary.paid_qr)}</div><div class="mini-lbl">محصّل ر.ق</div></div>
+          <div class="mini"><div class="mini-val c-amber">${fmt(t.summary.teacher_paid_egp)}</div><div class="mini-lbl">للمدرس ج.م</div></div>
+          <div class="mini"><div class="mini-val c-green">${fmt(t.summary.owner_net_egp)}</div><div class="mini-lbl">الصافي ج.م</div></div>
+        </div>
+      </div>`).join('')}</div>`;
+  } catch (e) { el.innerHTML = emptyBox('ti-alert-triangle', e.message); }
 }
+function openTeacher(id){ state.currentTeacher = id; showPage('teacher'); }
 
-function openTeacherModal(){
-  editingTeacherId=null;
-  document.querySelector('#modal-teacher .modal-title').childNodes[0].textContent='مدرس جديد';
-  ['t-name','t-subject','t-price','t-phone'].forEach(id=>document.getElementById(id).value='');
-  openModal('modal-teacher');
-}
-function editTeacher(id){
-  const t=cache.teachers.find(x=>x.id===id);
-  if(!t) return;
-  editingTeacherId=id;
-  document.querySelector('#modal-teacher .modal-title').childNodes[0].textContent='تعديل مدرس';
-  document.getElementById('t-name').value=t.name;
-  document.getElementById('t-subject').value=t.subject;
-  document.getElementById('t-price').value=t.price;
-  document.getElementById('t-phone').value=t.phone||'';
+function openTeacherModal(t=null){
+  state.editingTeacher = t ? t.id : null;
+  document.getElementById('mt-title').textContent = t ? 'تعديل المدرس' : 'مدرس جديد';
+  setVal('t-name', t?.name); setVal('t-subject', t?.subject); setVal('t-rate', t?.rate_egp ?? 60);
+  setVal('t-phone', t?.phone); setVal('t-notes', t?.notes);
   openModal('modal-teacher');
 }
 async function saveTeacher(){
-  const name=document.getElementById('t-name').value.trim();
-  const subject=document.getElementById('t-subject').value.trim();
-  const price=parseFloat(document.getElementById('t-price').value);
-  const phone=document.getElementById('t-phone').value.trim();
-  if(!name||!subject||!price) return toast('أكمل البيانات',true);
+  const body = { name: val('t-name'), subject: val('t-subject'), rate_egp: numVal('t-rate'), phone: val('t-phone'), notes: val('t-notes') };
+  if (!body.name) return toast('اكتب اسم المدرس', true);
   try {
-    if(editingTeacherId) await api('/api/teachers/'+editingTeacherId,'PUT',{name,subject,price,phone});
-    else await api('/api/teachers','POST',{name,subject,price,phone});
-    toast(editingTeacherId?'تم التعديل':'تمت الإضافة');
-    closeModal('modal-teacher'); loadTeachers();
-  } catch(e){ toast(e.message,true); }
+    if (state.editingTeacher) await api('/api/teachers/' + state.editingTeacher, 'PUT', body);
+    else await api('/api/teachers', 'POST', body);
+    closeModal('modal-teacher'); toast('تم الحفظ'); refresh();
+  } catch (e) { toast(e.message, true); }
 }
 async function deleteTeacher(id){
-  if(!confirm('حذف المدرس؟')) return;
-  try { await api('/api/teachers/'+id,'DELETE'); toast('تم الحذف'); loadTeachers(); }
-  catch(e){ toast(e.message,true); }
+  const t = state.teacherData;
+  if (!confirm(`حذف ${t?.name || 'المدرس'}؟ هيتمسح معاه كل مجموعاته (${t?.groups.length || 0}) ودفعات المدرس. مدفوعات الطلاب هتفضل في السجل.`)) return;
+  try { await api('/api/teachers/' + id, 'DELETE'); toast('تم الحذف'); showPage('teachers'); }
+  catch (e) { toast(e.message, true); }
 }
 
-// ─── STUDENTS ──────────────────────────────────────────────
-async function loadStudents(){
+// ─── TEACHER DETAIL (like one Excel sheet) ─────────────────
+async function loadTeacher(id){
+  const el = document.getElementById('teacher-content');
+  if (!id) return showPage('teachers');
   try {
-    const [students, teachers]=await Promise.all([api('/api/students'),api('/api/teachers')]);
-    cache.students=students; cache.teachers=teachers;
-    const body=document.getElementById('students-body');
-    if(!students.length){ body.innerHTML='<tr><td colspan="5" class="loading">لا يوجد طلبة بعد</td></tr>'; return; }
-    body.innerHTML=students.map(s=>`<tr>
-      <td><strong>${s.name}</strong>${s.parent?`<br><span style="font-size:11px;color:var(--text3)">${s.parent}</span>`:''}</td>
-      <td>${s.grade}</td>
-      <td>${s.teacher_name?`${s.teacher_name}<br><span style="font-size:11px;color:var(--text3)">${s.teacher_subject||''}</span>`:'<span style="color:var(--red)">بدون مدرس</span>'}</td>
-      <td>${fmt(s.price)} ر.ق</td>
-      <td style="display:flex;gap:6px">
-        <button class="btn btn-sm" onclick="editStudent(${s.id})"><i class="ti ti-transfer"></i> تغيير المدرس</button>
-        <button class="btn btn-sm btn-danger" onclick="deleteStudent(${s.id})"><i class="ti ti-trash"></i></button>
-      </td>
-    </tr>`).join('');
-  } catch(e){ toast('خطأ',true); }
-}
-
-function openStudentModal(){
-  editingStudentId=null;
-  document.querySelector('#modal-student .modal-title').childNodes[0].textContent='طالب جديد';
-  ['s-name','s-grade','s-parent','s-price'].forEach(id=>document.getElementById(id).value='');
-  populateSel('s-teacher',cache.teachers,'-- اختر مدرس --');
-  openModal('modal-student');
-}
-function editStudent(id){
-  const s=cache.students.find(x=>x.id===id);
-  if(!s) return;
-  editingStudentId=id;
-  document.querySelector('#modal-student .modal-title').childNodes[0].textContent='تعديل الطالب';
-  document.getElementById('s-name').value=s.name;
-  document.getElementById('s-grade').value=s.grade;
-  document.getElementById('s-parent').value=s.parent||'';
-  document.getElementById('s-price').value=s.price;
-  populateSel('s-teacher',cache.teachers,'-- اختر مدرس --',s.teacher_id);
-  openModal('modal-student');
-}
-async function saveStudent(){
-  const name=document.getElementById('s-name').value.trim();
-  const grade=document.getElementById('s-grade').value.trim();
-  const teacher_id=parseInt(document.getElementById('s-teacher').value)||null;
-  const price=parseFloat(document.getElementById('s-price').value);
-  const parent=document.getElementById('s-parent').value.trim();
-  if(!name||!grade||!price) return toast('أكمل البيانات',true);
-  try {
-    if(editingStudentId) await api('/api/students/'+editingStudentId,'PUT',{name,grade,teacher_id,price,parent});
-    else await api('/api/students','POST',{name,grade,teacher_id,price,parent});
-    toast(editingStudentId?'تم التعديل':'تمت الإضافة');
-    closeModal('modal-student'); loadStudents();
-  } catch(e){ toast(e.message,true); }
-}
-async function deleteStudent(id){
-  if(!confirm('حذف الطالب؟')) return;
-  try { await api('/api/students/'+id,'DELETE'); toast('تم الحذف'); loadStudents(); }
-  catch(e){ toast(e.message,true); }
-}
-
-// ─── SESSIONS ──────────────────────────────────────────────
-async function loadSessions(){
-  try {
-    const [months, teachers, students]=await Promise.all([api('/api/sessions/months'),api('/api/teachers'),api('/api/students')]);
-    cache.teachers=teachers; cache.students=students;
-    const curMonth=new Date().toISOString().slice(0,7);
-    if(!months.includes(curMonth)) months.unshift(curMonth);
-    if(!activeSessionMonth||!months.includes(activeSessionMonth)) activeSessionMonth=months[0];
-    const tabs=document.getElementById('session-tabs');
-    tabs.innerHTML=months.map(m=>`<button class="month-tab ${m===activeSessionMonth?'active':''}" onclick="selectSessionMonth('${m}',this)">${fmtMonth(m)}</button>`).join('');
-    showMonthSessions(activeSessionMonth);
-  } catch(e){ toast('خطأ',true); }
-}
-function selectSessionMonth(m,btn){
-  activeSessionMonth=m;
-  document.querySelectorAll('.month-tab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  showMonthSessions(m);
-}
-async function showMonthSessions(month){
-  const cont=document.getElementById('sessions-content');
-  cont.innerHTML='<div class="loading"><i class="ti ti-loader"></i>جارٍ التحميل...</div>';
-  try {
-    const sessions=await api('/api/sessions?month='+month);
-    const rate=getCurrentRate(month);
-    if(!sessions.length){ cont.innerHTML=`<div class="loading"><i class="ti ti-calendar-off"></i>لا توجد حصص في ${fmtMonth(month)}</div>`; return; }
-    cont.innerHTML=`<div style="font-size:12px;color:var(--text3);margin-bottom:8px">سعر الصرف المطبق: ${rate.toFixed(2)} ج.م/ر.ق</div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>الطالب</th><th>المدرس</th><th>حصص</th><th>يدفع (ر.ق)</th><th>الاستلام</th><th>يستلم (ج.م)</th><th>الدفع</th><th>ربحك (ج.م)</th><th></th></tr></thead>
-      <tbody>${sessions.map(s=>{
-        const r=s.rate_snapshot||rate;
-        const sPays=s.student_price*s.count;
-        const tGets=s.teacher_price*s.count;
-        const profit=(sPays*r)-tGets;
-        return`<tr>
-          <td>${s.student_name}</td><td>${s.teacher_name}</td>
-          <td style="text-align:center;font-weight:600">${s.count}</td>
-          <td><strong>${fmt(sPays)}</strong></td>
-          <td><button class="btn btn-sm ${s.paid_by_student?'btn-accent':''}" onclick="togglePay(${s.id},'student','${month}')">${s.paid_by_student?'✓ مدفوع':'انتظار'}</button></td>
-          <td><strong>${fmt(tGets)}</strong></td>
-          <td><button class="btn btn-sm ${s.paid_to_teacher?'btn-accent':''}" onclick="togglePay(${s.id},'teacher','${month}')">${s.paid_to_teacher?'✓ تم':'لم يُدفع'}</button></td>
-          <td style="color:var(--green);font-weight:600">${fmt(profit)}</td>
-          <td><button class="btn btn-sm btn-danger" onclick="deleteSession(${s.id},'${month}')"><i class="ti ti-trash"></i></button></td>
-        </tr>`;
-      }).join('')}</tbody>
-    </table></div>`;
-  } catch(e){ toast('خطأ',true); }
-}
-async function togglePay(id,who,month){
-  try { await api('/api/sessions/'+id+'/payment','PATCH',{field:who}); showMonthSessions(month); }
-  catch(e){ toast(e.message,true); }
-}
-async function deleteSession(id,month){
-  if(!confirm('حذف هذه الحصص؟')) return;
-  try { await api('/api/sessions/'+id,'DELETE'); toast('تم الحذف'); showMonthSessions(month); }
-  catch(e){ toast(e.message,true); }
-}
-
-// Session modal
-function openSessionModal(){
-  document.getElementById('sess-month').value=new Date().toISOString().slice(0,7);
-  populateSel('sess-student',cache.students,'-- اختر طالب --');
-  populateSel('sess-teacher',cache.teachers,'-- اختر مدرس --');
-  document.getElementById('sess-count').value='';
-  document.getElementById('sess-preview').style.display='none';
-  openModal('modal-session');
-}
-function onSessionStudentChange(){
-  const sid=parseInt(document.getElementById('sess-student').value);
-  const student=cache.students.find(s=>s.id===sid);
-  if(student&&student.teacher_id) populateSel('sess-teacher',cache.teachers,'-- اختر مدرس --',student.teacher_id);
-  updatePreview();
-}
-function updatePreview(){
-  const sid=parseInt(document.getElementById('sess-student').value);
-  const tid=parseInt(document.getElementById('sess-teacher').value);
-  const count=parseInt(document.getElementById('sess-count').value)||0;
-  const month=document.getElementById('sess-month').value;
-  const student=cache.students.find(s=>s.id===sid);
-  const teacher=cache.teachers.find(t=>t.id===tid);
-  const prev=document.getElementById('sess-preview');
-  if(!student||!teacher||!count){ prev.style.display='none'; return; }
-  const rate=getCurrentRate(month);
-  const sPays=student.price*count;
-  const tGets=teacher.price*count;
-  const profit=(sPays*rate)-tGets;
-  document.getElementById('preview-rate-label').textContent='بسعر صرف '+rate.toFixed(2)+' ج.م/ر.ق';
-  document.getElementById('prev-student').textContent=fmt(sPays)+' ر.ق';
-  document.getElementById('prev-teacher').textContent=fmt(tGets)+' ج.م';
-  document.getElementById('prev-profit').textContent=fmt(profit)+' ج.م';
-  prev.style.display='block';
-}
-async function saveSession(){
-  const month=document.getElementById('sess-month').value;
-  const student_id=parseInt(document.getElementById('sess-student').value);
-  const teacher_id=parseInt(document.getElementById('sess-teacher').value);
-  const count=parseInt(document.getElementById('sess-count').value);
-  if(!month||!student_id||!teacher_id||!count) return toast('أكمل البيانات',true);
-  try {
-    await api('/api/sessions','POST',{month,student_id,teacher_id,count});
-    toast('تم الحفظ'); closeModal('modal-session');
-    activeSessionMonth=month; loadSessions();
-  } catch(e){ toast(e.message,true); }
-}
-
-// ─── FINANCE ───────────────────────────────────────────────
-async function loadFinance(){
-  try {
-    const months=await api('/api/sessions/months');
-    const sel=document.getElementById('finance-month-sel');
-    const prev=sel.value;
-    sel.innerHTML=months.map(m=>`<option value="${m}" ${m===prev?'selected':''}>${fmtMonth(m)}</option>`).join('')||'<option>لا توجد بيانات</option>';
-    const month=sel.value||months[0];
-    if(!month){ document.getElementById('finance-content').innerHTML='<div class="loading"><i class="ti ti-chart-bar"></i>لا توجد بيانات</div>'; return; }
-    const [sessions,rates]=await Promise.all([api('/api/sessions?month='+month),api('/api/rates')]);
-    cache.rates=rates;
-    const rate=getCurrentRate(month);
-    const totalQar=sessions.reduce((a,s)=>a+s.student_price*s.count,0);
-    const collectedQar=sessions.filter(s=>s.paid_by_student).reduce((a,s)=>a+s.student_price*s.count,0);
-    const totalEgp=sessions.reduce((a,s)=>a+s.teacher_price*s.count,0);
-    const paidEgp=sessions.filter(s=>s.paid_to_teacher).reduce((a,s)=>a+s.teacher_price*s.count,0);
-    const profit=(collectedQar*rate)-paidEgp;
-    const expected=(totalQar*rate)-totalEgp;
-    document.getElementById('finance-content').innerHTML=`
-      <div style="font-size:12px;color:var(--text3);margin-bottom:12px">سعر الصرف: <strong>${rate.toFixed(2)} ج.م/ر.ق</strong></div>
-      <div class="stats-grid" style="grid-template-columns:repeat(4,1fr)">
-        <div class="stat-card"><div class="stat-label">مستحق من الطلبة (ر.ق)</div><div class="stat-value" style="color:var(--accent)">${fmt(totalQar)}</div><div class="stat-sub">محصّل: ${fmt(collectedQar)}</div></div>
-        <div class="stat-card"><div class="stat-label">مستحق للمدرسين (ج.م)</div><div class="stat-value" style="color:var(--amber)">${fmt(totalEgp)}</div><div class="stat-sub">مدفوع: ${fmt(paidEgp)}</div></div>
-        <div class="stat-card"><div class="stat-label">ربح محقق (ج.م)</div><div class="stat-value" style="color:var(--green)">${fmt(profit)}</div><div class="stat-sub">من المدفوع فعلاً</div></div>
-        <div class="stat-card"><div class="stat-label">ربح متوقع (ج.م)</div><div class="stat-value" style="color:var(--amber)">${fmt(expected)}</div><div class="stat-sub">لو اتحصّل الكل</div></div>
+    await loadSettings();
+    const t = await api('/api/teachers/' + id);
+    state.teacherData = t;
+    const s = t.summary;
+    const showArchived = state.showArchived;
+    const groups = t.groups.filter(g => showArchived || !g.archived);
+    const owner = esc(state.settings.owner_name || 'الصافي');
+    el.innerHTML = `
+      <div class="page-header">
+        <div><div class="page-title">${esc(t.name)}</div><div class="sub">${esc(t.subject)} · سعر الحصة الافتراضي ${fmt(t.rate_egp)} ج.م ${t.phone ? '· ' + esc(t.phone) : ''}</div></div>
+        <div class="btn-row">
+          <button class="btn btn-accent" onclick="openGroupModal(null, ${t.id})"><i class="ti ti-plus"></i> مجموعة جديدة</button>
+          <button class="btn" onclick='openTeacherModal(state.teacherData)'><i class="ti ti-edit"></i> تعديل</button>
+          <button class="btn btn-danger" onclick="deleteTeacher(${t.id})"><i class="ti ti-trash"></i></button>
+        </div>
       </div>
-      <div class="section-title" style="margin-top:1.25rem">تفاصيل كل زوج</div>
-      <div class="table-wrap"><table>
-        <thead><tr><th>الطالب</th><th>المدرس</th><th>حصص</th><th>يدفع (ر.ق)</th><th>يستلم (ج.م)</th><th>ربحك (ج.م)</th><th>الطالب</th><th>المدرس</th></tr></thead>
-        <tbody>${sessions.map(s=>{
-          const r=s.rate_snapshot||rate;
-          const sPays=s.student_price*s.count;
-          const tGets=s.teacher_price*s.count;
-          const profit=(sPays*r)-tGets;
-          return`<tr>
-            <td>${s.student_name}</td><td>${s.teacher_name}</td>
-            <td style="text-align:center">${s.count}</td>
-            <td>${fmt(sPays)}</td><td>${fmt(tGets)}</td>
-            <td style="color:var(--green);font-weight:600">${fmt(profit)}</td>
-            <td><span class="badge ${s.paid_by_student?'badge-green':'badge-amber'}">${s.paid_by_student?'مدفوع':'انتظار'}</span></td>
-            <td><span class="badge ${s.paid_to_teacher?'badge-green':'badge-red'}">${s.paid_to_teacher?'تم':'لم يُدفع'}</span></td>
-          </tr>`;
-        }).join('')}${!sessions.length?'<tr><td colspan="8" class="loading">لا توجد حصص</td></tr>':''}</tbody>
-      </table></div>`;
-  } catch(e){ toast('خطأ',true); }
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">إجمالي المحصّل (Total in QR)</div><div class="stat-value c-accent">${qr(s.paid_qr)}</div><div class="stat-sub">بنك ${fmt(s.bank)} · كاش ${fmt(s.cash)} · محفظة ${fmt(s.wallet_egp)} ج (${fmt(s.wallet_qr,1)} ر)</div></div>
+        <div class="stat-card"><div class="stat-label">متبقي على الطلاب (UnPaid)</div><div class="stat-value ${s.unpaid_qr > 0.5 ? 'c-red' : ''}">${qr(s.unpaid_qr)}</div><div class="stat-sub">من ${qr(s.deal_qr)}</div></div>
+        <div class="stat-card"><div class="stat-label">اتدفع للمدرس</div><div class="stat-value c-amber">${egp(s.teacher_paid_egp)}</div><div class="stat-sub">نسبته ${pct(s.teacher_ratio)} · ${fmt(s.taught)} حصة</div></div>
+        <div class="stat-card"><div class="stat-label">صافي ${owner}</div><div class="stat-value c-green">${egp(s.owner_net_egp)}</div><div class="stat-sub">نسبتها ${pct(s.owner_ratio)} · ≈ $${fmt(s.owner_net_usd)}</div></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <div class="h-title" style="margin:0">المجموعات</div>
+        <label class="check muted"><input type="checkbox" ${showArchived ? 'checked' : ''} onchange="state.showArchived=this.checked;loadTeacher(${t.id})"> إظهار المنتهية</label>
+      </div>
+      ${groups.length ? `<div class="table-wrap"><table>
+        <thead><tr><th>#</th><th>المجموعة</th><th>الباقة</th><th>سعر الحصة</th><th>المدفوع</th><th>المتبقي</th><th>الحصص</th><th>للمدرس</th><th></th></tr></thead>
+        <tbody>${groups.map((g, i) => `<tr class="clickable" onclick="openGroupDetail(${g.id})">
+          <td class="muted">${i + 1}</td>
+          <td><strong>${esc(g.name)}</strong>${g.archived ? ' <span class="badge badge-gray">منتهية</span>' : ''}${g.details ? `<div class="muted">${esc(g.details).slice(0, 60)}</div>` : ''}</td>
+          <td class="num">${qr(g.deal_qr)}<div class="muted">${g.sessions_total} حصة</div></td>
+          <td class="num">${fmt(g.class_price_qr, 1)} ر<div class="muted">${fmt(g.rate_egp)} ج للمدرس</div></td>
+          <td class="num">${qr(g.paid_qr)}</td>
+          <td class="num">${g.unpaid_qr > 0.5 ? `<span class="badge badge-red">${qr(g.unpaid_qr)}</span>` : g.unpaid_qr < -0.5 ? `<span class="badge badge-blue">زيادة ${qr(-g.unpaid_qr)}</span>` : '<span class="badge badge-green">خالص</span>'}</td>
+          <td>${fmt(g.taught)} / ${g.sessions_total}<div class="progress"><div style="width:${Math.min(100, g.sessions_total ? g.taught / g.sessions_total * 100 : 0)}%"></div></div></td>
+          <td class="num">${egp(g.teacher_paid_egp)}</td>
+          <td onclick="event.stopPropagation()"><button class="btn btn-sm" title="تسجيل حصص للمدرس" onclick="quickPayout(${g.id})"><i class="ti ti-player-play"></i></button></td>
+        </tr>`).join('')}</tbody>
+        <tfoot><tr><td></td><td>الإجمالي</td><td class="num">${qr(s.deal_qr)}</td><td></td><td class="num">${qr(s.paid_qr)}</td><td class="num">${qr(s.unpaid_qr)}</td><td>${fmt(s.taught)} / ${fmt(s.sessions_total)}</td><td class="num">${egp(s.teacher_paid_egp)}</td><td></td></tr></tfoot>
+      </table></div>` : emptyBox('ti-users-group', 'مفيش مجموعات — دوس "مجموعة جديدة"')}`;
+  } catch (e) { el.innerHTML = emptyBox('ti-alert-triangle', e.message); }
+}
+
+// ─── GROUPS ────────────────────────────────────────────────
+async function ensureTeachers(){ if (!state.teachers.length) state.teachers = await api('/api/teachers'); return state.teachers; }
+async function openGroupModal(g=null, teacherId=null){
+  await ensureTeachers();
+  state.editingGroup = g ? g.id : null;
+  document.getElementById('mg-title').textContent = g ? 'تعديل المجموعة' : 'مجموعة جديدة';
+  const tid = g ? g.teacher_id : teacherId;
+  document.getElementById('g-teacher').innerHTML = '<option value="">— اختار —</option>' +
+    state.teachers.map(t => `<option value="${t.id}" ${t.id === tid ? 'selected' : ''}>${esc(t.name)}</option>`).join('');
+  setVal('g-name', g?.name); setVal('g-details', g?.details); setVal('g-notes', g?.notes);
+  setVal('g-deal', g?.deal_qr); setVal('g-total', g?.sessions_total);
+  setVal('g-rate', g ? g.rate_egp : (state.teachers.find(t => t.id === tid)?.rate_egp ?? 60));
+  setVal('g-start', g ? g.start_date : today());
+  document.getElementById('g-archived').checked = !!g?.archived;
+  groupPreview();
+  openModal('modal-group');
+}
+function onGroupTeacherChange(){
+  if (state.editingGroup) return;
+  const t = state.teachers.find(t => t.id === +val('g-teacher'));
+  if (t) { setVal('g-rate', t.rate_egp); groupPreview(); }
+}
+function groupPreview(){
+  const deal = numVal('g-deal'), total = numVal('g-total'), rate = numVal('g-rate');
+  const r = state.settings?.rate || 13.22;
+  const box = document.getElementById('g-preview');
+  if (!total) { box.textContent = 'اكتب سعر الباقة وعدد الحصص عشان تشوف الحساب'; return; }
+  const teacherDeal = total * rate;
+  const net = deal * r - teacherDeal;
+  box.innerHTML = `سعر الحصة على الطالب: <b>${fmt(deal / total, 2)} ر.ق</b> · المدرس هياخد في الباقة: <b>${egp(teacherDeal)}</b> · الصافي المتوقع: <b class="c-green">${egp(net)}</b> (${pct(deal ? net / (deal * r) : 0)})`;
+}
+async function saveGroup(){
+  const body = { teacher_id: +val('g-teacher') || null, name: val('g-name'), details: val('g-details'), notes: val('g-notes'),
+    deal_qr: numVal('g-deal'), sessions_total: numVal('g-total'), rate_egp: numVal('g-rate'), start_date: val('g-start'),
+    archived: document.getElementById('g-archived').checked };
+  if (!body.teacher_id || !body.name) return toast('اختار المدرس واكتب اسم المجموعة', true);
+  if (body.deal_qr < 0 || body.sessions_total < 0 || body.rate_egp < 0) return toast('الأرقام مينفعش تكون بالسالب', true);
+  try {
+    if (state.editingGroup) await api('/api/groups/' + state.editingGroup, 'PUT', body);
+    else await api('/api/groups', 'POST', body);
+    closeModal('modal-group'); toast('تم الحفظ'); refresh();
+    if (state.editingGroup && document.getElementById('modal-gdetail').classList.contains('open')) openGroupDetail(state.editingGroup);
+  } catch (e) { toast(e.message, true); }
+}
+async function deleteGroup(id){
+  if (!confirm('حذف المجموعة؟ دفعات المدرس هتتمسح، ومدفوعات الطلاب هتفضل في السجل من غير مجموعة.')) return;
+  try { await api('/api/groups/' + id, 'DELETE'); closeModal('modal-gdetail'); toast('تم الحذف'); refresh(); }
+  catch (e) { toast(e.message, true); }
+}
+
+async function openGroupDetail(id){
+  try {
+    if (!state.settings) await loadSettings();
+    const g = await api('/api/groups/' + id);
+    state.currentGroup = g;
+    document.getElementById('gd-title').innerHTML = `${esc(g.name)} <span class="muted">— ${esc(g.teacher_name)}</span>`;
+    document.getElementById('gd-content').innerHTML = `
+      ${g.details ? `<div class="preview-box" style="margin-bottom:10px;white-space:pre-wrap">${esc(g.details)}</div>` : ''}
+      <div class="stats-grid" style="grid-template-columns:repeat(auto-fit,minmax(140px,1fr))">
+        <div class="stat-card"><div class="stat-label">الباقة</div><div class="stat-value" style="font-size:18px">${qr(g.deal_qr)}</div><div class="stat-sub">${g.sessions_total} حصة · ${fmt(g.class_price_qr, 2)} ر/حصة</div></div>
+        <div class="stat-card"><div class="stat-label">المدفوع</div><div class="stat-value c-accent" style="font-size:18px">${qr(g.paid_qr)}</div><div class="stat-sub">${g.unpaid_qr > 0.5 ? `<span class="c-red">متبقي ${qr(g.unpaid_qr)}</span>` : 'خالص ✓'}</div></div>
+        <div class="stat-card"><div class="stat-label">الحصص</div><div class="stat-value" style="font-size:18px">${fmt(g.taught)} / ${g.sessions_total}</div><div class="stat-sub">متبقي ${fmt(g.remaining)}</div></div>
+        <div class="stat-card"><div class="stat-label">للمدرس</div><div class="stat-value c-amber" style="font-size:18px">${egp(g.teacher_paid_egp)}</div><div class="stat-sub">من ${egp(g.teacher_deal_egp)}</div></div>
+        <div class="stat-card"><div class="stat-label">الصافي</div><div class="stat-value c-green" style="font-size:18px">${egp(g.owner_net_egp)}</div><div class="stat-sub">${fmt(g.rate_egp)} ج/حصة للمدرس</div></div>
+      </div>
+      <div class="split">
+        <div>
+          <div class="section-title"><span>مدفوعات الطالب</span><button class="btn btn-sm btn-accent" onclick="openPaymentModal(null, ${g.id})"><i class="ti ti-plus"></i> دفعة</button></div>
+          ${g.payments.length ? `<div class="table-wrap"><table><thead><tr><th>التاريخ</th><th>الطريقة</th><th>المبلغ</th><th></th></tr></thead><tbody>
+            ${g.payments.map(p => `<tr><td class="num">${esc(p.date) || '—'}</td><td>${METHODS[p.method]}${p.sender ? `<div class="muted">${esc(p.sender)}</div>` : ''}</td>
+            <td class="num">${p.method === 'wallet' ? egp(p.amount) : qr(p.amount)}</td>
+            <td><div class="btn-row"><button class="btn btn-sm" title="تعديل" onclick="editPaymentById(${p.id})"><i class="ti ti-edit"></i></button><button class="btn btn-sm btn-danger" title="حذف" onclick="deletePayment(${p.id})"><i class="ti ti-trash"></i></button></div></td></tr>`).join('')}
+          </tbody></table></div>` : emptyBox('ti-cash-off', 'مفيش مدفوعات')}
+        </div>
+        <div>
+          <div class="section-title"><span>حصص اتدفعت للمدرس</span></div>
+          <div class="form-row3" style="margin-bottom:8px">
+            <input type="number" step="1" min="0" id="po-sessions" placeholder="عدد الحصص">
+            <input type="date" id="po-date" value="${today()}">
+            <button class="btn btn-accent" onclick="addPayout(${g.id})"><i class="ti ti-plus"></i> سجّل</button>
+          </div>
+          ${g.payouts.length ? `<div class="table-wrap"><table><thead><tr><th>#</th><th>التاريخ</th><th>حصص</th><th>المبلغ</th><th></th></tr></thead><tbody>
+            ${g.payouts.map((p, i) => `<tr><td class="muted">${i + 1}</td><td class="num">${esc(p.date) || '—'}${p.notes ? `<div class="muted" dir="auto">${esc(p.notes)}</div>` : ''}</td><td>${fmt(p.sessions, 1)}</td><td class="num">${egp(p.sessions * g.rate_egp)}</td>
+            <td><button class="btn btn-sm btn-danger" title="حذف" onclick="deletePayout(${p.id})"><i class="ti ti-trash"></i></button></td></tr>`).join('')}
+          </tbody></table></div>` : emptyBox('ti-player-play', 'لسه مفيش حصص اتدفعت')}
+        </div>
+      </div>
+      ${g.notes ? `<div class="preview-box" style="white-space:pre-wrap"><b>ملاحظات:</b> ${esc(g.notes)}</div>` : ''}
+      <div class="modal-footer">
+        <button class="btn" onclick="openGroupModal(state.currentGroup)"><i class="ti ti-edit"></i> تعديل المجموعة</button>
+        <button class="btn btn-danger" onclick="deleteGroup(${g.id})"><i class="ti ti-trash"></i> حذف</button>
+      </div>`;
+    openModal('modal-gdetail');
+  } catch (e) { toast(e.message, true); }
+}
+async function addPayout(groupId){
+  const sessions = parseFloat(document.getElementById('po-sessions').value);
+  if (!sessions || sessions <= 0) return toast('اكتب عدد الحصص', true);
+  const g = state.currentGroup;
+  if (g && g.id === groupId && g.taught + sessions > g.sessions_total && !confirm(`كده المدرس هياخد ${g.taught + sessions} حصة والباقة ${g.sessions_total} بس. تكمّل؟`)) return;
+  try {
+    await api('/api/payouts', 'POST', { group_id: groupId, sessions, date: val('po-date') });
+    toast('تم التسجيل'); openGroupDetail(groupId); refresh();
+  } catch (e) { toast(e.message, true); }
+}
+async function quickPayout(groupId){ await openGroupDetail(groupId); document.getElementById('po-sessions')?.focus(); }
+async function deletePayout(id){
+  if (!confirm('حذف الدفعة دي؟')) return;
+  try { await api('/api/payouts/' + id, 'DELETE'); openGroupDetail(state.currentGroup.id); refresh(); }
+  catch (e) { toast(e.message, true); }
+}
+
+// ─── PAYMENTS ──────────────────────────────────────────────
+let payTimer;
+['pf-from', 'pf-to', 'pf-method', 'pf-status'].forEach(id => document.getElementById(id).addEventListener('change', loadPayments));
+document.getElementById('pf-q').addEventListener('input', () => { clearTimeout(payTimer); payTimer = setTimeout(loadPayments, 300); });
+
+async function loadPayments(){
+  const el = document.getElementById('payments-content');
+  try {
+    if (!state.settings) await loadSettings();
+    const qs = new URLSearchParams();
+    for (const [k, id] of [['from', 'pf-from'], ['to', 'pf-to'], ['method', 'pf-method'], ['q', 'pf-q']]) if (val(id)) qs.set(k, val(id));
+    let rows = await api('/api/payments?' + qs);
+    const st = val('pf-status');
+    if (st === 'not-arrived') rows = rows.filter(p => !p.arrived);
+    if (st === 'not-registered') rows = rows.filter(p => !p.registered);
+    if (st === 'no-group') rows = rows.filter(p => !p.group_id);
+    state.paymentsCache = rows;
+    const sum = m => rows.filter(p => p.method === m).reduce((s, p) => s + p.amount, 0);
+    const totalQr = sum('bank') + sum('cash') + sum('wallet') / state.settings.rate;
+    const shown = rows.slice(0, 500);
+    el.innerHTML = `
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-label">بنك</div><div class="stat-value c-accent">${qr(sum('bank'))}</div></div>
+        <div class="stat-card"><div class="stat-label">كاش</div><div class="stat-value c-accent">${qr(sum('cash'))}</div></div>
+        <div class="stat-card"><div class="stat-label">محفظة</div><div class="stat-value c-accent">${egp(sum('wallet'))}</div></div>
+        <div class="stat-card"><div class="stat-label">الإجمالي</div><div class="stat-value c-green">${qr(totalQr)}</div><div class="stat-sub">= ${egp(totalQr * state.settings.rate)} · ${rows.length} عملية</div></div>
+      </div>
+      ${rows.length ? `<div class="table-wrap"><table>
+        <thead><tr><th>التاريخ</th><th>الطالب</th><th>المجموعة</th><th>الطريقة</th><th>المبلغ</th><th>المرسل</th><th>وصل</th><th>اتسجل</th><th></th></tr></thead>
+        <tbody>${shown.map(p => `<tr>
+          <td class="num">${esc(p.date) || '—'}</td>
+          <td><strong>${esc(p.student)}</strong>${p.notes ? `<div class="muted" dir="auto">${esc(p.notes)}</div>` : ''}</td>
+          <td>${p.group_id ? `<a href="#" onclick="openGroupDetail(${p.group_id});return false">${esc(p.group_name)}</a><div class="muted">${esc(p.teacher_name)}</div>` : '<span class="muted">—</span>'}</td>
+          <td><span class="badge ${p.method === 'wallet' ? 'badge-amber' : p.method === 'cash' ? 'badge-gray' : 'badge-blue'}">${METHODS[p.method]}</span></td>
+          <td class="num"><strong>${p.method === 'wallet' ? egp(p.amount) : qr(p.amount)}</strong></td>
+          <td class="muted">${esc(p.sender)}</td>
+          <td><input type="checkbox" ${p.arrived ? 'checked' : ''} onchange="togglePaymentFlag(${p.id}, 'arrived', this.checked)"></td>
+          <td><input type="checkbox" ${p.registered ? 'checked' : ''} onchange="togglePaymentFlag(${p.id}, 'registered', this.checked)"></td>
+          <td><div class="btn-row"><button class="btn btn-sm" title="تعديل" onclick="editPaymentById(${p.id})"><i class="ti ti-edit"></i></button><button class="btn btn-sm btn-danger" title="حذف" onclick="deletePayment(${p.id})"><i class="ti ti-trash"></i></button></div></td>
+        </tr>`).join('')}</tbody></table></div>
+        ${rows.length > shown.length ? `<div class="muted" style="text-align:center">بيظهر أول ${shown.length} من ${rows.length} — استخدم الفلاتر</div>` : ''}`
+      : emptyBox('ti-cash-off', 'مفيش مدفوعات')}`;
+  } catch (e) { el.innerHTML = emptyBox('ti-alert-triangle', e.message); }
+}
+
+async function loadAllGroups(){ state.groups = await api('/api/groups'); return state.groups; }
+async function openPaymentModal(p=null, groupId=null){
+  try {
+    if (!state.settings) await loadSettings();
+    await loadAllGroups();
+  } catch (e) { return toast(e.message, true); }
+  state.editingPayment = p ? p.id : null;
+  document.getElementById('mp-title').textContent = p ? 'تعديل الدفعة' : 'تسجيل دفعة من طالب';
+  const gid = p ? p.group_id : groupId;
+  const active = state.groups.filter(g => !g.archived || g.id === gid);
+  document.getElementById('p-group').innerHTML = '<option value="">— من غير مجموعة —</option>' +
+    active.map(g => `<option value="${g.id}" ${g.id === gid ? 'selected' : ''}>${esc(g.name)} — ${esc(g.teacher_name)}${g.unpaid_qr > 0.5 ? ` (متبقي ${fmt(g.unpaid_qr, 1)} ر)` : ''}</option>`).join('');
+  const g = state.groups.find(x => x.id === gid);
+  setVal('p-method', p?.method || 'bank'); setVal('p-amount', p?.amount ?? (g && g.unpaid_qr > 0 ? +g.unpaid_qr.toFixed(2) : ''));
+  setVal('p-student', p?.student ?? g?.name ?? ''); setVal('p-date', p ? p.date : today());
+  setVal('p-sender', p?.sender); setVal('p-notes', p?.notes);
+  document.getElementById('p-arrived').checked = p ? !!p.arrived : true;
+  document.getElementById('p-registered').checked = p ? !!p.registered : false;
+  paymentPreview();
+  openModal('modal-payment');
+  setTimeout(() => document.getElementById('p-amount').focus(), 50);
+}
+function paymentPreview(){
+  const m = val('p-method'), a = numVal('p-amount');
+  document.getElementById('p-amount-lbl').textContent = m === 'wallet' ? 'المبلغ (جنيه) *' : 'المبلغ (ريال) *';
+  const box = document.getElementById('p-preview');
+  if (m === 'wallet' && a) { box.style.display = 'block'; box.textContent = `= ${fmt(a / state.settings.rate, 2)} ريال بسعر ${state.settings.rate.toFixed(2)}`; }
+  else box.style.display = 'none';
+}
+async function editPaymentById(id){
+  let p = state.paymentsCache.find(x => x.id === id) || state.currentGroup?.payments?.find(x => x.id === id);
+  if (p) openPaymentModal(p);
+}
+async function savePayment(){
+  const body = { method: val('p-method'), amount: numVal('p-amount'), student: val('p-student'), date: val('p-date'),
+    group_id: +val('p-group') || null, sender: val('p-sender'), notes: val('p-notes'),
+    arrived: document.getElementById('p-arrived').checked, registered: document.getElementById('p-registered').checked };
+  if (!body.amount) return toast('اكتب المبلغ', true);
+  try {
+    if (state.editingPayment) await api('/api/payments/' + state.editingPayment, 'PUT', body);
+    else await api('/api/payments', 'POST', body);
+    closeModal('modal-payment'); toast('تم الحفظ'); refresh();
+    if (document.getElementById('modal-gdetail').classList.contains('open') && state.currentGroup) openGroupDetail(state.currentGroup.id);
+  } catch (e) { toast(e.message, true); }
+}
+async function togglePaymentFlag(id, field, value){
+  const p = state.paymentsCache.find(x => x.id === id);
+  if (!p) return;
+  try { await api('/api/payments/' + id, 'PUT', { ...p, [field]: value }); p[field] = value ? 1 : 0; }
+  catch (e) { toast(e.message, true); loadPayments(); }
+}
+async function deletePayment(id){
+  if (!confirm('حذف الدفعة دي؟')) return;
+  try {
+    await api('/api/payments/' + id, 'DELETE'); toast('تم الحذف'); refresh();
+    if (document.getElementById('modal-gdetail').classList.contains('open') && state.currentGroup) openGroupDetail(state.currentGroup.id);
+  } catch (e) { toast(e.message, true); }
 }
 
 // ─── SETTINGS ──────────────────────────────────────────────
-async function loadSettings(){
-  document.getElementById('new-rate-date').value=new Date().toISOString().slice(0,10);
+async function loadSettingsPage(){
   try {
-    const rates=await api('/api/rates');
-    cache.rates=rates;
-    const latest=rates[0];
-    document.getElementById('rate-banner-text').textContent=`سعر الصرف الحالي: ${latest.rate.toFixed(2)} ج.م = 1 ر.ق`;
-    document.getElementById('rate-history').innerHTML=rates.map((r,i)=>`
-      <div class="rate-row">
-        <div><strong>${r.rate.toFixed(2)} ج.م/ر.ق</strong>${r.note?` — <span style="color:var(--text3)">${r.note}</span>`:''}</div>
-        <div style="display:flex;align-items:center;gap:10px">
-          <span style="color:var(--text3);font-size:12px">${r.date}</span>
-          ${i===0&&rates.length>1?`<button class="btn btn-sm btn-danger" onclick="deleteRate(${r.id})"><i class="ti ti-trash"></i></button>`:''}
-        </div>
-      </div>`).join('');
-  } catch(e){ toast('خطأ',true); }
+    const s = await loadSettings();
+    setVal('set-egp-usd', s.egp_per_usd); setVal('set-qr-usd', s.qr_per_usd); setVal('set-owner', s.owner_name);
+    settingsPreview();
+  } catch (e) { toast(e.message, true); }
 }
-async function saveRate(){
-  const rate=parseFloat(document.getElementById('new-rate').value);
-  const date=document.getElementById('new-rate-date').value;
-  const note=document.getElementById('new-rate-note').value.trim();
-  if(!rate||rate<1||!date) return toast('أدخل سعر وتاريخ صحيحين',true);
+function settingsPreview(){
+  const e = numVal('set-egp-usd'), q = numVal('set-qr-usd');
+  document.getElementById('set-preview').textContent = q ? `1 ريال = ${(e / q).toFixed(3)} جنيه` : '';
+}
+['set-egp-usd', 'set-qr-usd'].forEach(id => document.getElementById(id).addEventListener('input', settingsPreview));
+async function saveSettings(){
+  const egpUsd = numVal('set-egp-usd'), qrUsd = numVal('set-qr-usd');
+  if (egpUsd <= 0 || qrUsd <= 0) return toast('اكتب أسعار صحيحة', true);
+  try { await api('/api/settings', 'PUT', { egp_per_usd: egpUsd, qr_per_usd: qrUsd, owner_name: val('set-owner') }); toast('تم الحفظ'); loadSettingsPage(); }
+  catch (e) { toast(e.message, true); }
+}
+async function doImport(){
+  const f = document.getElementById('import-file').files[0];
+  if (!f) return toast('اختار الملف الأول', true);
+  const replace = document.getElementById('import-replace').checked;
+  if (replace && !confirm('هيتمسح كل المدرسين والمجموعات والمدفوعات الحالية. متأكد؟')) return;
+  const out = document.getElementById('import-result');
+  out.innerHTML = '<span class="muted">جارٍ الاستيراد...</span>';
   try {
-    await api('/api/rates','POST',{rate,date,note});
-    toast('تم حفظ السعر الجديد');
-    document.getElementById('new-rate').value='';
-    document.getElementById('new-rate-note').value='';
-    loadSettings();
-  } catch(e){ toast(e.message,true); }
+    const res = await fetch('/api/import' + (replace ? '?replace=1' : ''), { method: 'POST', body: f, headers: { 'Content-Type': 'application/octet-stream' } });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error);
+    out.innerHTML = `<div class="preview-box">✅ تم: ${data.teachers} مدرس · ${data.groups} مجموعة · ${data.payments} دفعة من الشيتات · ${data.payouts} دفعة مدرس · ${data.log_payments} تحويل من السجل
+      ${data.skipped_sheets.length ? `<div class="muted" style="margin-top:4px">شيتات اتسابت: ${data.skipped_sheets.map(esc).join('، ')}</div>` : ''}</div>`;
+    state.teachers = [];
+    toast('تم الاستيراد');
+  } catch (e) { out.innerHTML = ''; toast(e.message, true); }
 }
-async function deleteRate(id){
-  if(!confirm('حذف هذا السعر؟')) return;
-  try { await api('/api/rates/'+id,'DELETE'); toast('تم الحذف'); loadSettings(); }
-  catch(e){ toast(e.message,true); }
-}
-
-// ─── HELPERS ───────────────────────────────────────────────
-function populateSel(selId,items,placeholder,selected=null){
-  const sel=document.getElementById(selId);
-  sel.innerHTML=`<option value="">${placeholder}</option>`;
-  items.forEach(x=>sel.innerHTML+=`<option value="${x.id}" ${x.id===selected?'selected':''}>${x.name}${x.subject?' — '+x.subject:''}</option>`);
-}
-
-// Hook nav item modal openers
-document.querySelector('[onclick="showPage(\'teachers\',this)"]').after();
-window.openModal = function(id){
-  if(id==='modal-teacher') openTeacherModal();
-  else if(id==='modal-student'){ populateSel('s-teacher',cache.teachers,'-- اختر مدرس --'); openModal('modal-student'); }
-  else if(id==='modal-session') openSessionModal();
-  else document.getElementById(id).classList.add('open');
-};
 
 // INIT
 loadDashboard();
