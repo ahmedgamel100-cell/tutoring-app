@@ -26,7 +26,11 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ─── Database ─────────────────────────────────────────────────────
-const db = new Database(process.env.DB_PATH || './data.db');
+// DB_PATH wins; otherwise use the Railway volume at /app/data when it exists, else a local file.
+const fs = require('fs');
+const DB_PATH = process.env.DB_PATH || (fs.existsSync('/app/data') ? '/app/data/data.db' : './data.db');
+console.log(`📁 Database: ${DB_PATH}`);
+const db = new Database(DB_PATH);
 db.pragma('journal_mode = WAL');
 db.pragma('foreign_keys = ON');
 

@@ -41,10 +41,7 @@ npm start
    → في الـ project، اضغط على الـ service
    → اضغط "Volumes"
    → أضف Volume واربطه بـ `/app/data`
-   → في Settings → Environment Variables أضف:
-     ```
-     DB_PATH=/app/data/data.db
-     ```
+   → البرنامج هيلاقيه لوحده ويحفظ البيانات فيه (مش محتاج DB_PATH)
 
 6. **Railway هيديك رابط تلقائياً** زي:
    `https://tutoring-app-production-xxxx.railway.app`
